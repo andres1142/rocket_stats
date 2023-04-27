@@ -3,17 +3,23 @@ import { useState } from 'react';  // Importing useState from React to use state
 export default function API() {
     // Creates the state variable counter and the function setCounter to update the state variable.
     const [counter, setCounter] = useState(0);
-
+    let appName = "Rocket Stats";
 
     // Function to update the state variable counter.
     function handleClick() {
         setCounter(counter + 1);
     }
 
+    function changeName() {
+        appName = "New Name";
+    }
+
+
     // Returns the JSX for the API component.
+
     return (
         <div>
-            <h1>API</h1>
+            <h3>API {appName}</h3>
             <p>Here we will be using the SpaceX API to get data about the rockets.</p>
             <br/>
             <br/>

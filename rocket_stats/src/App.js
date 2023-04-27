@@ -1,5 +1,6 @@
 import Header from './Components/Header';
 import API from "./Components/Body/API";
+import LauchesPerYear from "./Components/Body/LauchesPerYear";
 import './App.css';
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
         <Header/>
         <API/>
+        <LauchesPerYear/>
     </div>
   );
 }
