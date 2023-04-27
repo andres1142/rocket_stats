@@ -1,12 +1,11 @@
 import { useState , useEffect} from 'react';
 
-export default function LauchesPerYear(){
+export default function LaunchesPerYear(){
     const [data, setData] = useState([])
 
     useEffect( () => {
          fetchData().then(r => console.log(r))
     }, [])
-
 
     async function fetchData(){
         try {
@@ -17,7 +16,6 @@ export default function LauchesPerYear(){
             console.log(error)
         }
     }
-
 
     function createTable() {
         console.log(data)
