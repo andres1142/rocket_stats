@@ -19,33 +19,34 @@ export default function LauchesPerYear(){
     }
 
 
-    function createTable() {
-        console.log(data)
-        return (
-            <table>
-                <thead>
-                <tr>
-                    <th>Mission Name</th>
-                    <th>Launch Date</th>
-                    <th>Launch Site</th>
-                    <th>Details</th>
-                </tr>
-                </thead>
-                <tbody>
-                {data.map((launch, index) => {
-                        return (
-                            <tr key={index}>
-                                <td>{launch.name}</td>
-                                <td>{launch.window_start}</td>
-                                <td>{launch.pad.location.name}</td>
-                                <td>{launch.mission ? launch.mission.description : "No Details"}</td>
-                            </tr>
-                        )
-                    }
-                )}
-                </tbody>
-            </table>
-        )
+    /**
+     * This functions iterates through the data and maps the rocket name into counter value.
+     * */
+
+    function sortData(){
+        // Initialize an empty object to store the launch data
+        let launch_dict = {};
+
+        // Loop through each launch in the 'results' array
+        for (let launch of data) {
+            debugger
+            // Extract the year from the 'window_start' property
+            const year = String(launch.window_start).substring(0, 4);
+            // Extract the rocket configuration name
+            const name = String(launch.rocket.configuration.name);
+
+            // Check if the year exists in the launch_dict object
+            if (!(year in launch_dict)) {
+                launch_dict[year] = { [name]: 1 };
+            } else {
+                // Check if the rocket configuration name exists for the year
+                if (!(name in launch_dict[year])) {
+                    launch_dict[year][name] = 1;
+                } else {
+                    launch_dict[year][name] += 1;
+                }
+            }
+        }
     }
 
     return (
